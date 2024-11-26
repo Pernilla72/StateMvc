@@ -1,0 +1,21 @@
+﻿@using StateMvc.Models
+@model UpdateVM
+
+@{
+
+
+    
+}
+
+<h1>Update Settings</h1>
+<form asp-controller="Settings" asp-action="Update" method="post">
+    <label asp-for="Email"></label>
+    <input asp-for="Email"/>
+    <span asp-validation-for="Email"></span>
+    
+    <label asp-for="CompanyName"></label>
+    <input asp-for="CompanyName"/>
+    <span asp-validation-for="CompanyName"></span>
+
+    <button type="submit">Save</button> 
+</form>
