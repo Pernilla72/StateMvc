@@ -11,10 +11,13 @@ namespace StateMvc
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<DataService>();
             builder.Services.AddTransient<StateService>();
+            //builder.Services.AddScoped<IDataService, DataService>();
+            builder.Services.AddHttpContextAccessor();
+            builder.Services.AddSession();
 
             var app = builder.Build();
 
-
+            app.UseSession();
             app.UseHttpsRedirection();
             if (!app.Environment.IsDevelopment())
             {
