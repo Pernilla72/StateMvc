@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StateMvc.Models
+namespace StateMvc.Models;
+
+public class UpdateVM
 {
-    public class UpdateVM
-    {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
 
 
-        [Required]
-        public string CompanyName { get; set; }
-    }
+    [Required]
+    public string CompanyName { get; set; }
+
+    [Required]
+    public string OKString { get; set; }
 }
