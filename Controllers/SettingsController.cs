@@ -21,4 +21,4 @@ namespace StateMvc.Controllers
         }
     }
 }
-//new UpdateVM{ Email="skolan@mail.se", CompanyName="Skolan"}
+////new UpdateVM{ Email="skolan@mail.se", CompanyName="Skolan"}
