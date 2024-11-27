@@ -11,7 +11,7 @@ public class StateService(
 {
     const string Email = "Email";
     const string CompanyName = "CompanyName";
-    const string TempDataOKString = "SuccessionString";
+    const string OKString = "OKStringMessage";
 
 
     public string CacheEmail
@@ -42,7 +42,7 @@ public class StateService(
                 accessor.HttpContext.Session.Remove(CompanyName);
         }
     }
-    public string? TempDataSuccessString
+    public string? TempDataOKString
     {
         get
         {
