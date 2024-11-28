@@ -1,0 +1,17 @@
+﻿@model StateMvc.Models.UpdateVM
+
+
+
+<h1>Settings</h1>
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}
+
+<div>
+    <strong>Support E-mail:</strong> @Model.Email
+</div>
+<div>
+    <strong>Company name:</strong> @Model.CompanyName
+</div>

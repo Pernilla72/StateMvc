@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Caching.Memory;
-using System.Reflection.Metadata.Ecma335;
 
 namespace StateMvc.Services;
 
@@ -16,10 +15,10 @@ public class StateService(
 
     public string CacheEmail
     {
-        get { return memoryCache.Get<string?>(Email); }
+        get => memoryCache.Get<string?>(Email) ?? string.Empty; 
         set
         {
-            if (value != null)
+            if (!string.IsNullOrWhiteSpace(value))
                 memoryCache.Set(Email, value);
             else
                 memoryCache.Remove(Email);
@@ -28,18 +27,14 @@ public class StateService(
 
     public string? SessionCompanyName
     {
-        get
-        {
-            var sessionvalue = accessor.HttpContext?.Session.GetString(CompanyName);
-            return sessionvalue == null ? null : sessionvalue;
+        get => accessor.HttpContext?.Session.GetString(CompanyName) ?? string.Empty;
 
-        }
         set
         {
-            if (value != null)
-                accessor.HttpContext!.Session.SetString(CompanyName, value.ToString());
+            if (!string.IsNullOrWhiteSpace(value))
+                accessor.HttpContext?.Session.SetString(CompanyName, value);
             else
-                accessor.HttpContext.Session.Remove(CompanyName);
+                accessor.HttpContext?.Session.Remove(CompanyName);
         }
     }
     public string? TempDataOKString
@@ -53,8 +48,5 @@ public class StateService(
         {
             tempFactory.GetTempData(accessor.HttpContext)["TempDataOKString"] = value;
         }
-
-
-
     }
 }

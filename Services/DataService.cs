@@ -21,5 +21,4 @@ public class DataService(StateService stateService)
         stateService.SessionCompanyName = model.CompanyName;
         stateService.TempDataOKString = "Your settings has been saved";
     }
-
 }

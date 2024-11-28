@@ -1,5 +1,6 @@
 ﻿@using StateMvc.Models
-@model UpdateVM
+
+@model StateMvc.Models.UpdateVM
 
 @{
     ViewBag.Title = "Update";
@@ -8,14 +9,21 @@
 <div style="display: flex; max-width: 1000px; margin: 50px" id="UpdateView">
 
 <h1>Update Settings</h1>
-<form asp-controller="Settings" asp-action="Update">
-    <label asp-for="Email"></label>
-    <input asp-for="Email"/>
-    <span asp-validation-for="Email"></span>
-    
-    <label asp-for="CompanyName"></label>
-    <input asp-for="CompanyName"/>
-    <span asp-validation-for="CompanyName"></span>
-
+    <form asp-controller="Settings" asp-action="Update" method="post">
+        <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email"/>
+        <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+        <label asp-for="CompanyName"></label>
+        <input asp-for="CompanyName"/>
+        <span asp-validation-for="CompanyName"></span>
+        </div>
     <button type="submit">Save</button> 
 </form>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

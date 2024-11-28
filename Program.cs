@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using StateMvc.Services;
 
 namespace StateMvc
@@ -16,17 +17,18 @@ namespace StateMvc
             builder.Services.AddSession();
 
             var app = builder.Build();
-
-            app.UseSession();
+            app.MapStaticAssets();
             app.UseHttpsRedirection();
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/error/exception");
                 app.UseStatusCodePagesWithRedirects("/error/http/{0}");
             }
-
             //app.MapGet("/", () => "Hello World!");
+            app.UseSession();
+            app.UseRouting();
             app.MapControllers();
+            app.MapControllerRoute( name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
             app.UseStaticFiles();
             app.Run();
         }
