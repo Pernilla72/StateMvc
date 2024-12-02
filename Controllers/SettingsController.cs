@@ -1,38 +1,36 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using StateMvc.Models;
 using StateMvc.Services;
+using StateMvc.Views.Settings;
 
 namespace StateMvc.Controllers;
 
-public class SettingsController : Controller
+public class SettingsController(DataService dataService, StateService stateService) : Controller
 {
-    private readonly DataService dataService;
-    public SettingsController(DataService dataService)
-    {
-        this.dataService = dataService;
-    }
-
     [HttpGet("/Update")]
-    public ActionResult Update()
+    [HttpGet("/")]
+    public IActionResult Update()
     {
         var model = new UpdateVM();
         return View(model);
     }
 
     [HttpPost("/Update")]
-    public ActionResult Update(UpdateVM model)
+    public IActionResult Update(UpdateVM model)
     {
         if (!ModelState.IsValid)
         {
             return View(model);
         }
         dataService.Update(model);
-        TempData["SuccessMessage"] = "Settings updated successfully!";
+        dataService.
+
+
+        TempDataSuccessMessage["SuccessMessage"] = "Settings updated successfully!";
         return RedirectToAction("Index");
     }
 
     [HttpGet("/Index")]
-    public ActionResult Index()
+    public IActionResult Index()
     {
         var model = dataService.Get();
         ViewBag.SuccessMessage = TempData["SuccessMessage"]; // Lägg till meddelandet om det finns

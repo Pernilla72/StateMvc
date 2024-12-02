@@ -1,4 +1,4 @@
-﻿namespace StateMvc.Models;
+﻿namespace StateMvc.Views.Settings;
 
 public class IndexVM
 {

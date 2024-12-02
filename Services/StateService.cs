@@ -10,8 +10,6 @@ public class StateService(
 {
     const string Email = "Email";
     const string CompanyName = "CompanyName";
-    const string OKString = "OKStringMessage";
-
 
     public string CacheEmail
     {
@@ -37,16 +35,18 @@ public class StateService(
                 accessor.HttpContext?.Session.Remove(CompanyName);
         }
     }
-    public string? TempDataOKString
+    public string? TempDataSuccessMessage
     {
         get
         {
-            var tempDatavalue = tempFactory.GetTempData(accessor.HttpContext)["TempDataOKString"];
+            var tempDatavalue = tempFactory.GetTempData(accessor.HttpContext)
+                ["TempDataSuccessMessage"];
             return tempDatavalue == null ? null : tempDatavalue.ToString();
         }
         set
         {
-            tempFactory.GetTempData(accessor.HttpContext)["TempDataOKString"] = value;
+            tempFactory.GetTempData(accessor.HttpContext)
+                ["TempDataSuccessMessage"] = value;
         }
     }
 }

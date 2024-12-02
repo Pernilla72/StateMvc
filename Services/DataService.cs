@@ -1,4 +1,4 @@
-﻿using StateMvc.Models;
+﻿using StateMvc.Views.Settings;
 
 namespace StateMvc.Services;
 
@@ -10,7 +10,7 @@ public class DataService(StateService stateService)
         {
             Email = stateService.CacheEmail,
             CompanyName = stateService.SessionCompanyName,
-            OKString = stateService.TempDataOKString,
+            SuccessMessage = stateService.TempDataSuccessMessage,
         };
         return model;
     }
@@ -19,6 +19,6 @@ public class DataService(StateService stateService)
     {
         stateService.CacheEmail = model.Email;
         stateService.SessionCompanyName = model.CompanyName;
-        stateService.TempDataOKString = "Your settings has been saved";
+        stateService.TempDataSuccessMessage = "Your settings has been saved";
     }
 }
